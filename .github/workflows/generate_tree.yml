@@ -92,7 +92,7 @@ jobs:
       run: |
         git config --global user.name "${{ env.GN }}"
         git config --global user.email "${{ env.GE }}"
-
+        git config -l
     - name: Upload LineageOS Tree for GitHub 
       run: |
         cd /home/LOS-Generator/output
@@ -100,5 +100,5 @@ jobs:
         git branch -M lineage-${{ env.CN }}
         git add .
         git commit -s -m "${{ env.CN }}: LineageOS compatible device tree"
-        gh repo create lineage_device_${{ env.DB }}_${{ env.CN }} --public --description="LineageOS compatible device tree for ${{ env.CN }}." --source=. --remote=origin --push
+        gh repo create lineage_device_${{ env.DB }}_${{ env.CN }} --public --description="LineageOS compatible device tree for ${{ env.CN }}." --source=. --remote=main --push
         echo "Successful!"
